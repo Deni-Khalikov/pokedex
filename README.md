@@ -42,7 +42,6 @@ _Note: For this exercise, the goal is to keep working on it, until the deadline 
 
 # Extra challenge
 There are a couple of pokemon that don’t play with the normal rules, add code so their cases are also handled elegantly.
->>>>>>> a45102d51918a509f742e3c2cf24486c7561667d
 
 - Ditto only has 1 move.
 - Eevee has 6 evolutions.
