@@ -304,3 +304,6 @@
   .fairy {
     background: #F9AEFF;
   }
+  #hidden {
+    display: none;
+  }
