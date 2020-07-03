@@ -1,17 +1,35 @@
 //https://pokeapi.co/api/v2/evolution-chain/1 id = 1
+const globals = {
+    currentId : null,
+}
 const fetchPoke = pokeName => {
     fetch(`https://pokeapi.co/api/v2/pokemon/${pokeName}`)
         .then(response => response.json())
         .then(data => {
             console.log(data.sprites)
-            showSprite(data.sprites.front_default)
+            showInfo(data.sprites.front_default, data.weight, data.height, data.id, data.types, data.name)
         })
 }
-const showSprite = (sprite) => {
-
+const showInfo = (sprite, weight, height, id, types, name) => {
+    globals.currentId = id;
+    globals.currentId = name;
+    let typeOne = document.getElementsByClassName("poke-type-one")[0];
+    let typeTwo = document.getElementsByClassName("poke-type-two")[0];
+    console.log(types)
+    if(types.length !== 1){
+        typeTwo.className = "poke-type-two " + types[1].type.name;
+        typeTwo.title = types[1].type.name;
+    } else typeTwo.className = "poke-type-two hide"
+    typeOne.className = "poke-type-one " + types[0].type.name;
+    typeOne.title = types[0].type.name;
+    console.log(globals.currentId)
+    document.getElementsByClassName("poke-id")[0].innerHTML = "ID: " + id;
+    document.getElementsByClassName("poke-name")[0].innerHTML = name.replace(name[0], name[0].toUpperCase());
     document.getElementsByClassName("hide")[0].style.display = "block";
     document.getElementsByClassName("screen__image")[0].children[0].src = sprite;
-    document.getElementsByClassName("screen__image")[0].children[1].src = sprite.replace("pokemon", "pokemon/back")
+    document.getElementsByClassName("screen__image")[0].children[1].src = sprite.replace("pokemon", "pokemon/back");
+    document.getElementsByClassName("poke-weight")[0].innerHTML = weight + "lb";
+    document.getElementsByClassName("poke-height")[0].innerHTML = height + "ft";
 }
 
 const showSearch = () => {
@@ -29,14 +47,7 @@ const getPokemon = () => {
         .then(response => response.json())
         .then(data => {
             console.log(data)
-            //let sprite = data.sprites.front_default;
-            //let screen = document.getElementsByClassName("main-section__black")[0];
-            showSprite(data.sprites.front_default)
-            /*
-            screen.style.background = `url(${sprite})`;
-            screen.style.backgroundRepeat = "no-repeat";
-            screen.style.backgroundPosition = "center";
-            */
+            showInfo(data.sprites.front_default, data.weight, data.height, data.id, data.types, data.name)
         })
 
     fetch(`https://pokeapi.co/api/v2/pokemon-species/${pokeName}`)
@@ -57,7 +68,6 @@ const showRandomPokemon = () => {
             fetch(`https://pokeapi.co/api/v2/pokemon-species/${Math.floor(Math.random() * id)}`)
                 .then(response => response.json())
                 .then(data => {
-                    console.log(data.name)
                     fetchPoke(data.name)
                 })
         })
