@@ -26,8 +26,8 @@ const showInfo = (sprite, weight, height, id, types, name) => {
     document.getElementsByClassName("poke-id")[0].innerHTML = "ID: " + id;
     document.getElementsByClassName("poke-name")[0].innerHTML = name.replace(name[0], name[0].toUpperCase());
     document.getElementsByClassName("hide")[0].style.display = "block";
-    document.getElementsByClassName("screen__image")[0].children[0].src = sprite;
-    document.getElementsByClassName("screen__image")[0].children[1].src = sprite.replace("pokemon", "pokemon/back");
+    document.getElementsByClassName("screen_image")[0].children[0].src = sprite;
+    document.getElementsByClassName("screen_image")[0].children[1].src = sprite.replace("pokemon", "pokemon/back");
     document.getElementsByClassName("poke-weight")[0].innerHTML = weight + "lb";
     document.getElementsByClassName("poke-height")[0].innerHTML = height + "ft";
 }

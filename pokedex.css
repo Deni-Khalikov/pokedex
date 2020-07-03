@@ -1,5 +1,4 @@
 * {
-<<<<<<< HEAD
   box-sizing: border-box;
   margin: 0;
   padding: 0;
@@ -311,12 +310,7 @@ body {
 .fairy {
   background: #F9AEFF;
 }
-=======
-    box-sizing: border-box;
-    margin: 0;
-    padding: 0;
-  }
-  
+
   body {
     display: flex;
     font-family: sans-serif;
@@ -620,4 +614,3 @@ body {
   #hidden {
     display: none;
   }
->>>>>>> c1a3ee4a0212664164edb6d2d7a5d48693760820
